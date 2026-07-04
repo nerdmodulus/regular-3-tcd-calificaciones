@@ -132,6 +132,18 @@ const GROUPS = [
   }
 ];
 
+/* ---------- Portada: selector de grupos ---------- */
+const picker = document.getElementById('group-picker');
+if (picker) {
+  picker.innerHTML = GROUPS.map(g => `
+    <a class="picker-card" href="#${g.id}">
+      <div class="picker-id">Regular 3 · ${g.id}</div>
+      <div class="picker-name">${g.name}</div>
+      <div class="picker-members">${g.members.join(' · ')}</div>
+      <div class="picker-cta">Ver evaluación →</div>
+    </a>`).join('');
+}
+
 /* ---------- Render de secciones ---------- */
 const main = document.getElementById('groups');
 
