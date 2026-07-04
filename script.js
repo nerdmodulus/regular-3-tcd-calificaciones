@@ -84,7 +84,7 @@ const GROUPS = [
     ]
   },
   {
-    id: 'G6', name: 'Grupo 6',
+    id: 'G6', name: 'BeatArtificial',
     members: ['Astorga', 'Badilla', 'Cifuentes', 'Domínguez', 'Irarrázaval'],
     site: 'https://script.google.com/macros/s/AKfycby9wnH1w7owN6SEd3KFAM85DHlCIcWWqk29ZihSBGSBN4ywP6qvQ0UkN0BUS565Au9aaQ/exec',
     grade: 5.0, preGrade: 6.0,
