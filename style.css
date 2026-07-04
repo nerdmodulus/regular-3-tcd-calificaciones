@@ -106,18 +106,76 @@ body {
   font-size: 1.05rem;
 }
 
-.hero-scroll {
-  margin-top: 56px;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--blue);
-  animation: bob 2.2s ease-in-out infinite;
-  width: fit-content;
+/* ---------- Selector de grupos (portada) ---------- */
+.group-picker {
+  margin-top: 52px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
 }
 
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+.picker-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.picker-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--blue), var(--blue-bright));
+}
+
+.picker-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--blue-bright);
+  box-shadow: 0 14px 30px -18px rgba(10, 82, 198, 0.55);
+}
+
+.picker-card:focus-visible {
+  outline: 3px solid var(--blue-bright);
+  outline-offset: 2px;
+}
+
+.picker-id {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+
+.picker-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.12rem;
+  margin-top: 3px;
+  line-height: 1.2;
+}
+
+.picker-members {
+  margin-top: 6px;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.picker-cta {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--blue);
 }
 
 /* ---------- Sección de grupo ---------- */
