@@ -1,4 +1,4 @@
-/* ============================================================
+¿/* ============================================================
    Calificaciones Regular 3 — datos, render y lógica
    ============================================================ */
 
@@ -132,12 +132,18 @@ const GROUPS = [
   }
 ];
 
-/* ---------- Gráfico de líneas del hero (panorama del curso) ---------- */
+/* ---------- Gráfico de líneas del hero (panorama del curso) ----------
+   Promedios por criterio de la rúbrica: se promedian los puntajes (0-10)
+   de los 8 grupos y se convierte el porcentaje a nota 1,0-7,0 con la
+   misma fórmula de exigencia 60% de la rúbrica. */
 const CHART_DATA = [
-  { short: 'Prom',  label: 'Promedio general del curso',              value: 4.5 },
-  { short: 'IA',    label: 'Promedio en manejo de IA',                value: 5.1 },
-  { short: 'Web',   label: 'Promedio en construcción de sitio web',   value: 4.8 },
-  { short: 'OBS',   label: 'Promedio en transmisión con OBS',         value: 4.3 }
+  { short: 'Prom',     label: 'Promedio general del curso',            value: 4.5 },
+  { short: 'IA',       label: 'Promedio · Solución de IA',             value: 5.1 },
+  { short: 'OBS',      label: 'Promedio · Transmisión en Vivo (OBS)',  value: 4.3 },
+  { short: 'Escaleta', label: 'Promedio · Contenido y Escaleta',       value: 3.9 },
+  { short: 'Videos',   label: 'Promedio · Calidad de Videos',          value: 3.9 },
+  { short: 'Web',      label: 'Promedio · Sitio Web',                  value: 4.8 },
+  { short: 'Extra',    label: 'Promedio · Exigencia Adicional',        value: 5.4 }
 ];
 
 (function renderChart() {
