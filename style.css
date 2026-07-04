@@ -106,6 +106,107 @@ body {
   font-size: 1.05rem;
 }
 
+/* ---------- Hero en dos columnas + gráfico ---------- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-chart {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 22px 14px;
+  box-shadow: 0 18px 45px -30px rgba(11, 27, 58, 0.4);
+}
+
+.chart-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.chart-caption {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  margin: 2px 0 10px;
+}
+
+.chart-box { position: relative; width: 100%; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+
+.chart-grid-line { stroke: var(--line); stroke-width: 1; }
+.chart-grid-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--ink-soft);
+}
+
+.chart-approve-line {
+  stroke: var(--fail);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 5;
+  opacity: 0.65;
+}
+
+.chart-approve-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  fill: var(--fail);
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--blue-bright);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-area { fill: url(#chartFill); opacity: 0.5; }
+
+.chart-dot {
+  stroke: #fff;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.chart-dot:hover, .chart-dot:focus { r: 8; outline: none; }
+
+.chart-x-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--ink);
+  text-anchor: middle;
+}
+
+.chart-tooltip {
+  position: absolute;
+  background: var(--ink);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -110%);
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.chart-tooltip strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+}
+
+.chart-tooltip.show { opacity: 1; }
+
 /* ---------- Selector de grupos (portada) ---------- */
 .group-picker {
   margin-top: 52px;
@@ -502,6 +603,8 @@ body {
 /* ---------- Responsivo ---------- */
 @media (max-width: 640px) {
   .hero { padding-top: 64px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .group-picker { margin-top: 40px; }
   .group-body { padding: 20px 16px 26px; }
   .gc { padding: 26px 20px 20px; }
   .decimas form { grid-template-columns: 1fr; }
