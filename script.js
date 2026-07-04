@@ -88,7 +88,7 @@ const GROUPS = [
     members: ['Astorga', 'Badilla', 'Cifuentes', 'Domínguez', 'Irarrázaval'],
     site: 'https://script.google.com/macros/s/AKfycby9wnH1w7owN6SEd3KFAM85DHlCIcWWqk29ZihSBGSBN4ywP6qvQ0UkN0BUS565Au9aaQ/exec',
     grade: 5.0, preGrade: 6.0,
-    penalty: 'Descuento de −1,0 punto aplicado a la nota final por falta gramatical en el video 2: se dice "hubieron", palabra que no existe; lo correcto es "hubo".',
+    penalty: 'Descuento de −1,0 punto aplicado a la nota final por falta gramatical en el video 2: se dice "hubieron", palabra que no es correcta en este contexto; lo correcto es "hubo" (consulten en el sitio web de la"Fundeu" para más detalles).',
     criteria: [
       ['Solución de IA', 10, 'Excelente configuración de la IA solicitada.'],
       ['Transmisión en Vivo', 7, 'GC en el vivo mostrando quién es quién, pero tardanza de 4-5 segundos antes de empezar a hablar y cortes abruptos al cierre de los videos 1 y 2.'],
