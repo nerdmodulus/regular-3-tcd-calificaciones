@@ -14,7 +14,7 @@ const WARNING_TEXT = 'Tengo anotados a quienes tienen décimas. Es solo un ejerc
 const GROUPS = [
   {
     id: 'G1', name: 'AcompañaMente',
-    members: ['Luciano Poblete', 'Mateo Segovia', 'Fernanda Marín', 'Luciano Salazar', 'Pablo Alarcón'],
+    members: ['Poblete', 'Segovia', 'Marín', 'Salazar', 'Alarcón'],
     site: 'https://neephilimm.github.io/AcompanaMente/',
     grade: 3.0, preGrade: 4.0,
     penalty: 'Descuento de −1,0 punto aplicado a la nota final por falta de ortografía en la transmisión en vivo ("e mocionalmente", segundo bloque de texto en rojo), según el reglamento del curso.',
@@ -29,7 +29,7 @@ const GROUPS = [
   },
   {
     id: 'G2', name: 'Cineteca Digital',
-    members: ['Almendra Beiza', 'Nolan Gallardo', 'Mayerling López'],
+    members: ['Beiza', 'Gallardo', 'López'],
     site: 'https://sites.google.com/view/cinetecadigital/inicio',
     grade: 2.6, preGrade: null, penalty: null,
     criteria: [
@@ -43,7 +43,7 @@ const GROUPS = [
   },
   {
     id: 'G3', name: 'Miluca',
-    members: ['Francisca Aravena', 'Antonia Zúñiga', 'Pablo Vásquez'],
+    members: ['Aravena', 'Zúñiga', 'P. Vásquez'],
     site: 'https://sites.google.com/view/miluca/p%C3%A1gina-principal',
     grade: 7.0, preGrade: null, penalty: null,
     criteria: [
@@ -57,7 +57,7 @@ const GROUPS = [
   },
   {
     id: 'G4', name: 'KiwiFitness',
-    members: ['Boza', 'Sigritz', 'Vergara', 'Mardones'],
+    members: ['Boza', 'Szikriszt', 'Vergara', 'Mardones'],
     site: 'https://sites.google.com/view/kiwifitness/p%C3%A1gina-principal',
     grade: 5.6, preGrade: null, penalty: null,
     criteria: [
