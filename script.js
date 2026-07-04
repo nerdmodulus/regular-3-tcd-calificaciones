@@ -14,7 +14,7 @@ const WARNING_TEXT = 'Tengo anotados a quienes tienen décimas. Es solo un ejerc
 const GROUPS = [
   {
     id: 'G1', name: 'AcompañaMente',
-    members: ['Poblete', 'Segovia', 'Marín', 'Salazar', 'Alarcón'],
+    members: ['Luciano Poblete', 'Mateo Segovia', 'Fernanda Marín', 'Luciano Salazar', 'Pablo Alarcón'],
     site: 'https://neephilimm.github.io/AcompanaMente/',
     grade: 3.0, preGrade: 4.0,
     penalty: 'Descuento de −1,0 punto aplicado a la nota final por falta de ortografía en la transmisión en vivo ("e mocionalmente", segundo bloque de texto en rojo), según el reglamento del curso.',
@@ -29,7 +29,7 @@ const GROUPS = [
   },
   {
     id: 'G2', name: 'Cineteca Digital',
-    members: ['Beiza', 'Gallardo', 'López'],
+    members: ['Almendra Beiza', 'Nolan Gallardo', 'Mayerling López'],
     site: 'https://sites.google.com/view/cinetecadigital/inicio',
     grade: 2.6, preGrade: null, penalty: null,
     criteria: [
@@ -43,7 +43,7 @@ const GROUPS = [
   },
   {
     id: 'G3', name: 'Miluca',
-    members: ['Aravena', 'Zúñiga', 'P. Vásquez'],
+    members: ['Francisca Aravena', 'Antonia Zúñiga', 'Pablo Vásquez'],
     site: 'https://sites.google.com/view/miluca/p%C3%A1gina-principal',
     grade: 7.0, preGrade: null, penalty: null,
     criteria: [
@@ -57,7 +57,7 @@ const GROUPS = [
   },
   {
     id: 'G4', name: 'KiwiFitness',
-    members: ['Boza', 'Szikriszt', 'Vergara', 'Mardones'],
+    members: ['Boza', 'Sigritz', 'Vergara', 'Mardones'],
     site: 'https://sites.google.com/view/kiwifitness/p%C3%A1gina-principal',
     grade: 5.6, preGrade: null, penalty: null,
     criteria: [
@@ -84,7 +84,7 @@ const GROUPS = [
     ]
   },
   {
-    id: 'G6', name: 'BeatArtificial',
+    id: 'G6', name: 'Grupo 6',
     members: ['Astorga', 'Badilla', 'Cifuentes', 'Domínguez', 'Irarrázaval'],
     site: 'https://script.google.com/macros/s/AKfycby9wnH1w7owN6SEd3KFAM85DHlCIcWWqk29ZihSBGSBN4ywP6qvQ0UkN0BUS565Au9aaQ/exec',
     grade: 5.0, preGrade: 6.0,
@@ -131,6 +131,107 @@ const GROUPS = [
     ]
   }
 ];
+
+/* ---------- Gráfico de líneas del hero (panorama del curso) ---------- */
+const CHART_DATA = [
+  { short: 'Máx',   label: 'Nota más alta del curso',                 value: 7.0 },
+  { short: 'Mín',   label: 'Nota más baja del curso',                 value: 2.6 },
+  { short: 'Prom',  label: 'Promedio general del curso',              value: 4.5 },
+  { short: 'IA',    label: 'Promedio en manejo de IA',                value: 5.1 },
+  { short: 'Web',   label: 'Promedio en construcción de sitio web',   value: 4.8 },
+  { short: 'OBS',   label: 'Promedio en transmisión con OBS',         value: 4.3 }
+];
+
+(function renderChart() {
+  const box = document.getElementById('course-chart');
+  if (!box) return;
+
+  const W = 460, H = 290;
+  const pad = { top: 18, right: 18, bottom: 34, left: 34 };
+  const plotW = W - pad.left - pad.right;
+  const plotH = H - pad.top - pad.bottom;
+
+  const yMin = 1, yMax = 7;
+  const yPos = v => pad.top + plotH * (1 - (v - yMin) / (yMax - yMin));
+  const xPos = i => pad.left + (plotW / (CHART_DATA.length - 1)) * i;
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico de líneas con el panorama de notas del curso">
+    <defs>
+      <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2E7BFF" stop-opacity="0.28"/>
+        <stop offset="100%" stop-color="#2E7BFF" stop-opacity="0"/>
+      </linearGradient>
+    </defs>`;
+
+  // Grilla horizontal (notas 1 a 7)
+  for (let v = 1; v <= 7; v++) {
+    const y = yPos(v);
+    svg += `<line class="chart-grid-line" x1="${pad.left}" y1="${y}" x2="${W - pad.right}" y2="${y}"/>
+            <text class="chart-grid-label" x="${pad.left - 8}" y="${y + 3.5}" text-anchor="end">${v},0</text>`;
+  }
+
+  // Línea de aprobación (4,0)
+  const yA = yPos(4.0);
+  svg += `<line class="chart-approve-line" x1="${pad.left}" y1="${yA}" x2="${W - pad.right}" y2="${yA}"/>
+          <text class="chart-approve-label" x="${W - pad.right}" y="${yA - 5}" text-anchor="end">aprobación 4,0</text>`;
+
+  // Área bajo la línea + línea principal
+  const pts = CHART_DATA.map((d, i) => [xPos(i), yPos(d.value)]);
+  const lineD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0]},${p[1]}`).join(' ');
+  const areaD = `${lineD} L${pts[pts.length - 1][0]},${yPos(yMin)} L${pts[0][0]},${yPos(yMin)} Z`;
+
+  svg += `<path class="chart-area" d="${areaD}"/>`;
+  svg += `<path class="chart-line" d="${lineD}" id="chart-main-line"/>`;
+
+  // Puntos interactivos + etiquetas del eje X
+  CHART_DATA.forEach((d, i) => {
+    const [x, y] = pts[i];
+    const color = d.value >= 4.0 ? '#0A52C6' : '#E11D48';
+    svg += `<circle class="chart-dot" data-i="${i}" cx="${x}" cy="${y}" r="6" fill="${color}" tabindex="0"
+              aria-label="${d.label}: ${d.value.toFixed(1).replace('.', ',')}"/>
+            <text class="chart-x-label" x="${x}" y="${H - 10}">${d.short}</text>`;
+  });
+
+  svg += `</svg><div class="chart-tooltip" role="status"></div>`;
+  box.innerHTML = svg;
+
+  // Animación de trazado de la línea al cargar
+  const path = box.querySelector('#chart-main-line');
+  const len = path.getTotalLength();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+    path.style.transition = 'stroke-dashoffset 1.4s ease 0.3s';
+    requestAnimationFrame(() => requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; }));
+  }
+
+  // Tooltip interactivo
+  const tooltip = box.querySelector('.chart-tooltip');
+  const svgEl = box.querySelector('svg');
+
+  function showTip(i) {
+    const d = CHART_DATA[i];
+    const rect = svgEl.getBoundingClientRect();
+    const scaleX = rect.width / W, scaleY = rect.height / H;
+    tooltip.innerHTML = `${d.label}<br><strong>${d.value.toFixed(1).replace('.', ',')}</strong>`;
+    tooltip.style.left = `${pts[i][0] * scaleX}px`;
+    tooltip.style.top = `${pts[i][1] * scaleY}px`;
+    tooltip.classList.add('show');
+  }
+
+  box.querySelectorAll('.chart-dot').forEach(dot => {
+    const i = Number(dot.dataset.i);
+    dot.addEventListener('mouseenter', () => showTip(i));
+    dot.addEventListener('focus', () => showTip(i));
+    dot.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+    dot.addEventListener('blur', () => tooltip.classList.remove('show'));
+    dot.addEventListener('touchstart', (e) => { e.preventDefault(); showTip(i); }, { passive: false });
+  });
+
+  svgEl.addEventListener('touchstart', (e) => {
+    if (!e.target.classList.contains('chart-dot')) tooltip.classList.remove('show');
+  }, { passive: true });
+})();
 
 /* ---------- Portada: selector de grupos ---------- */
 const picker = document.getElementById('group-picker');
