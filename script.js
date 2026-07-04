@@ -134,8 +134,6 @@ const GROUPS = [
 
 /* ---------- Gráfico de líneas del hero (panorama del curso) ---------- */
 const CHART_DATA = [
-  { short: 'Máx',   label: 'Nota más alta del curso',                 value: 7.0 },
-  { short: 'Mín',   label: 'Nota más baja del curso',                 value: 2.6 },
   { short: 'Prom',  label: 'Promedio general del curso',              value: 4.5 },
   { short: 'IA',    label: 'Promedio en manejo de IA',                value: 5.1 },
   { short: 'Web',   label: 'Promedio en construcción de sitio web',   value: 4.8 },
