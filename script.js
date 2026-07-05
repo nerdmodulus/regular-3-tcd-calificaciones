@@ -119,13 +119,13 @@ const GROUPS = [
     id: 'G8', name: 'CreatorContentIA',
     members: ['Huilcal', 'Molina', 'Miranda', 'Cabrera', 'Cáceres'],
     site: 'https://martincabrerahsk-lang.github.io/creatorcontentia/',
-    grade: 3.6, preGrade: null, penalty: null,
+    grade: 3.7, preGrade: null, penalty: null,
     evidence: { img: 'https://i.imgur.com/kqOJa1x.png', caption: 'EVIDENCIA · Máscaras de video que llevan a notas escritas, no a videos.' },
     criteria: [
       ['Solución de IA', 10, 'El programa de IA cumple lo prometido.'],
       ['Transmisión en Vivo', 6, 'Buen vivo y traspaso limpio desde el video 1, pero sin GC en ningún momento.'],
       ['Contenido y Escaleta', 4, 'No hay intro (el video comenzó de inmediato) ni cierre, y ningún bloque tiene GC. Grupos más pequeños sí tenían todos los elementos solicitados.'],
-      ['Calidad de Videos', 4, 'Contenido entretenido y bien narrado (CTR, algoritmo, tiempo de visualización, publicidad en YouTube), pero sin GC, con un tramo del video 2 completamente sin audio ni música, y duraciones bajo el mínimo (4:00 y 4:30).'],
+      ['Calidad de Videos', 5, 'Contenido entretenido y bien narrado (CTR, algoritmo, tiempo de visualización, publicidad en YouTube), pero sin GC, con un tramo del video 2 completamente sin audio ni música.'],
       ['Sitio Web', 7, 'Cumple lo solicitado, pero en términos de UX las máscaras de video en las notas confunden: al cliquear llevan a una nota escrita, no a un video (ver evidencia).'],
       ['Exigencia Adicional', 0, 'Con 5 integrantes, los videos ni siquiera cumplen el mínimo base solicitado, por lo que no se agregó el tiempo extra exigido.']
     ]
@@ -304,9 +304,9 @@ GROUPS.forEach(g => {
             <div><label>Regular en la que usarás las décimas</label>
               <select name="regular" required>
                 <option value="">Selecciona…</option>
-                <option value="R1">R1</option>
-                <option value="R2">R2</option>
-                <option value="R3">R3</option>
+                <option value="R1">R1 (33%)</option>
+                <option value="R2">R2 (33%)</option>
+                <option value="R3">R3 (34%)</option>
               </select>
             </div>
             <button type="submit">Enviar décimas</button>
